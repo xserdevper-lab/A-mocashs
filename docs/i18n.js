@@ -1,0 +1,988 @@
+const AMOCASHS_TRANSLATIONS={
+  "ภาพรวม": {
+    "en": "Overview",
+    "ko": "개요",
+    "ja": "概要"
+  },
+  "บัญชีทั้งหมด": {
+    "en": "All accounts",
+    "ko": "전체 계좌",
+    "ja": "すべての口座"
+  },
+  "รายรับ / รายจ่าย": {
+    "en": "Income / Expenses",
+    "ko": "수입 / 지출",
+    "ja": "収入 / 支出"
+  },
+  "หนี้รายเดือน": {
+    "en": "Monthly bills",
+    "ko": "월별 납부",
+    "ja": "毎月の支払い"
+  },
+  "เครื่องคิดเลข": {
+    "en": "Calculator",
+    "ko": "계산기",
+    "ja": "電卓"
+  },
+  "การตั้งค่า": {
+    "en": "Settings",
+    "ko": "설정",
+    "ja": "設定"
+  },
+  "พื้นที่การเงินของคุณ": {
+    "en": "Your finances",
+    "ko": "나의 재무",
+    "ja": "あなたの家計"
+  },
+  "พื้นที่ส่วนตัว": {
+    "en": "Personal space",
+    "ko": "개인 공간",
+    "ja": "個人スペース"
+  },
+  "บัญชีส่วนตัว": {
+    "en": "Personal account",
+    "ko": "개인 계좌",
+    "ja": "個人口座"
+  },
+  "บันทึกให้เป็นนิสัย": {
+    "en": "Make tracking a habit",
+    "ko": "기록하는 습관",
+    "ja": "記録を習慣に"
+  },
+  "ทีละนิด ก็ใกล้เป้าหมาย": {
+    "en": "A little closer each day",
+    "ko": "매일 목표에 한 걸음 더",
+    "ja": "毎日、目標に一歩ずつ"
+  },
+  "เริ่มดูแลเงินของคุณ": {
+    "en": "Take care of your money",
+    "ko": "나의 돈을 관리하세요",
+    "ja": "お金の管理を始めよう"
+  },
+  "ด้วยการบันทึกในทุกวัน": {
+    "en": "Track a little every day",
+    "ko": "매일 조금씩 기록하세요",
+    "ja": "毎日少しずつ記録しよう"
+  },
+  "เงินของคุณ ในมุมที่ชัดเจน": {
+    "en": "Your money, clearly",
+    "ko": "한눈에 보는 내 돈",
+    "ja": "お金を、わかりやすく"
+  },
+  "ทุกบัญชี ทุกรายการ ดูแลได้ในที่เดียว": {
+    "en": "Every account, every transaction, in one place",
+    "ko": "모든 계좌와 거래를 한곳에서 관리하세요",
+    "ja": "すべての口座と取引をひとつの場所で"
+  },
+  "ยอดเงินคงเหลือทั้งหมด": {
+    "en": "Total balance",
+    "ko": "총 잔액",
+    "ja": "合計残高"
+  },
+  "ยอดเงินคงเหลือ": {
+    "en": "Available balance",
+    "ko": "잔액",
+    "ja": "残高"
+  },
+  "รายรับเดือนนี้": {
+    "en": "Income this month",
+    "ko": "이번 달 수입",
+    "ja": "今月の収入"
+  },
+  "รายจ่ายเดือนนี้": {
+    "en": "Expenses this month",
+    "ko": "이번 달 지출",
+    "ja": "今月の支出"
+  },
+  "เงินทุกบัญชี ในที่เดียว": {
+    "en": "All your money in one place",
+    "ko": "모든 계좌를 한곳에서",
+    "ja": "すべてのお金をひとつの場所で"
+  },
+  "หักจากบัญชีที่บันทึก": {
+    "en": "Deducted from the selected account",
+    "ko": "선택한 계좌에서 차감",
+    "ja": "選択した口座から差し引き"
+  },
+  "หนี้ที่รอชำระ": {
+    "en": "Unpaid bills",
+    "ko": "미납 금액",
+    "ja": "未払いの支払い"
+  },
+  "รายการในเดือนนี้": {
+    "en": "bills this month",
+    "ko": "이번 달 납부 건",
+    "ja": "今月の支払い"
+  },
+  "เหลือ ": {
+    "en": "Remaining: ",
+    "ko": "남은 건수: ",
+    "ja": "残り："
+  },
+  "บัญชีของฉัน": {
+    "en": "My accounts",
+    "ko": "내 계좌",
+    "ja": "自分の口座"
+  },
+  "ยอดคงเหลือในทุกบัญชี": {
+    "en": "Balances across all accounts",
+    "ko": "모든 계좌의 잔액",
+    "ja": "各口座の残高"
+  },
+  "เพิ่มบัญชีพร้อมยอดเงินเริ่มต้น": {
+    "en": "Add an account with an opening balance",
+    "ko": "시작 잔액으로 계좌를 추가하세요",
+    "ja": "開始残高を設定して口座を追加"
+  },
+  "เพิ่มบัญชีแรก": {
+    "en": "Add your first account",
+    "ko": "첫 계좌 추가",
+    "ja": "最初の口座を追加"
+  },
+  "เพิ่มบัญชี": {
+    "en": "Add account",
+    "ko": "계좌 추가",
+    "ja": "口座を追加"
+  },
+  "หนี้ประจำเดือน": {
+    "en": "Monthly bills",
+    "ko": "이번 달 납부",
+    "ja": "今月の支払い"
+  },
+  "ดูทั้งหมด": {
+    "en": "View all",
+    "ko": "모두 보기",
+    "ja": "すべて表示"
+  },
+  "ยังไม่มีหนี้รายเดือน": {
+    "en": "No monthly bills yet",
+    "ko": "등록된 월별 납부가 없습니다",
+    "ja": "毎月の支払いはまだありません"
+  },
+  "เพิ่มรายการหนี้": {
+    "en": "Add a bill",
+    "ko": "납부 항목 추가",
+    "ja": "支払いを追加"
+  },
+  "รายการล่าสุด": {
+    "en": "Recent transactions",
+    "ko": "최근 거래",
+    "ja": "最近の取引"
+  },
+  "เล็กน้อยในแต่ละวัน รวมเป็นภาพใหญ่": {
+    "en": "Daily details, a bigger picture",
+    "ko": "매일의 기록으로 전체를 파악하세요",
+    "ja": "日々の記録から全体が見える"
+  },
+  "ยังไม่มีรายการในเดือนนี้": {
+    "en": "No transactions this month",
+    "ko": "이번 달 거래가 없습니다",
+    "ja": "今月の取引はありません"
+  },
+  "บันทึกรายการแรก": {
+    "en": "Add your first transaction",
+    "ko": "첫 거래 기록",
+    "ja": "最初の取引を記録"
+  },
+  "เพิ่มรายการ": {
+    "en": "Add transaction",
+    "ko": "거래 추가",
+    "ja": "取引を追加"
+  },
+  "รวมยอดเงินจากทุกบัญชีของคุณ": {
+    "en": "All your account balances together",
+    "ko": "모든 계좌의 잔액을 한눈에",
+    "ja": "すべての口座の残高をまとめて確認"
+  },
+  "ยอดเริ่มต้น": {
+    "en": "Opening balance",
+    "ko": "시작 잔액",
+    "ja": "開始残高"
+  },
+  "ดูรายการบัญชีนี้": {
+    "en": "View this account's transactions",
+    "ko": "이 계좌의 거래 보기",
+    "ja": "この口座の取引を表示"
+  },
+  "บันทึกทุกความเคลื่อนไหวของเงิน": {
+    "en": "Track every movement of your money",
+    "ko": "모든 돈의 흐름을 기록하세요",
+    "ja": "お金の動きをすべて記録"
+  },
+  "ค้นหารายการ…": {
+    "en": "Search transactions…",
+    "ko": "거래 검색…",
+    "ja": "取引を検索…"
+  },
+  "ค้นหารายการ": {
+    "en": "Search transactions",
+    "ko": "거래 검색",
+    "ja": "取引を検索"
+  },
+  "ประเภทรายการ": {
+    "en": "Transaction type",
+    "ko": "거래 유형",
+    "ja": "取引の種類"
+  },
+  "ทุกประเภท": {
+    "en": "All types",
+    "ko": "모든 유형",
+    "ja": "すべての種類"
+  },
+  "กรองบัญชี": {
+    "en": "Filter accounts",
+    "ko": "계좌 필터",
+    "ja": "口座を絞り込み"
+  },
+  "ทุกบัญชี": {
+    "en": "All accounts",
+    "ko": "모든 계좌",
+    "ja": "すべての口座"
+  },
+  "โอนระหว่างบัญชี": {
+    "en": "Transfer between accounts",
+    "ko": "계좌 간 이체",
+    "ja": "口座間の振替"
+  },
+  "ส่งออก CSV": {
+    "en": "Export CSV",
+    "ko": "CSV 내보내기",
+    "ja": "CSVをエクスポート"
+  },
+  "ชำระทีละรายการ ดูความคืบหน้าในแต่ละเดือน": {
+    "en": "Record payments and track each month's progress",
+    "ko": "납부를 기록하고 매달 진행 상황을 확인하세요",
+    "ja": "支払いを記録して毎月の進捗を確認"
+  },
+  "เพิ่มหนี้": {
+    "en": "Add bill",
+    "ko": "납부 추가",
+    "ja": "支払いを追加"
+  },
+  "การบันทึกชำระจะเพิ่มรายการรายจ่ายและหักเงินจากบัญชีที่เลือก พร้อมทำเครื่องหมายชำระแล้วเฉพาะเดือนนี้": {
+    "en": "Recording a payment adds an expense, deducts it from the selected account and marks this month's bill as paid.",
+    "ko": "납부를 기록하면 선택한 계좌에서 지출이 차감되고 해당 월의 납부가 완료로 표시됩니다.",
+    "ja": "支払いを記録すると、選択した口座から支出を差し引き、その月の支払いを完了として表示します。"
+  },
+  "ชำระแล้ว": {
+    "en": "Paid",
+    "ko": "납부 완료",
+    "ja": "支払済み"
+  },
+  "เกินกำหนด": {
+    "en": "Overdue",
+    "ko": "기한 초과",
+    "ja": "期限超過"
+  },
+  "รอชำระ": {
+    "en": "Unpaid",
+    "ko": "미납",
+    "ja": "未払い"
+  },
+  "ครบกำหนดวันที่ ": {
+    "en": "Due on day ",
+    "ko": "납부일: 매월 ",
+    "ja": "支払日：毎月"
+  },
+  " ของเดือน": {
+    "en": " of each month",
+    "ko": "일",
+    "ja": "日"
+  },
+  "บันทึกชำระหนี้": {
+    "en": "Record bill payment",
+    "ko": "납부 기록",
+    "ja": "支払いを記録"
+  },
+  "บันทึกชำระ": {
+    "en": "Record payment",
+    "ko": "납부 기록",
+    "ja": "支払いを記録"
+  },
+  "รายการ": {
+    "en": "items",
+    "ko": "건",
+    "ja": "件"
+  },
+  " จาก ": {
+    "en": " of ",
+    "ko": " / ",
+    "ja": " / "
+  },
+  "คิดก่อนจ่าย แล้วบันทึกต่อได้เลย": {
+    "en": "Calculate first, then record it",
+    "ko": "계산한 뒤 바로 기록하세요",
+    "ja": "計算してから、そのまま記録"
+  },
+  "สูตรคำนวณ": {
+    "en": "Expression",
+    "ko": "계산식",
+    "ja": "計算式"
+  },
+  "นำยอดไปบันทึกรายการ": {
+    "en": "Use amount in a transaction",
+    "ko": "계산 금액으로 거래 기록",
+    "ja": "計算結果を取引に使用"
+  },
+  "รองรับวงเล็บและลำดับการคำนวณ": {
+    "en": "Supports parentheses and order of operations",
+    "ko": "괄호와 연산 순서를 지원합니다",
+    "ja": "括弧と計算の優先順位に対応"
+  },
+  "ปรับให้เป็นคุณ": {
+    "en": "Make it yours",
+    "ko": "나에게 맞게 설정",
+    "ja": "自分好みに設定"
+  },
+  "ตั้งค่าหน้าตาและดูสถานะการเชื่อมต่อ": {
+    "en": "Appearance, language and connection settings",
+    "ko": "화면, 언어 및 연결 설정",
+    "ja": "表示、言語、接続の設定"
+  },
+  "ภาษา": {
+    "en": "Language",
+    "ko": "언어",
+    "ja": "言語"
+  },
+  "เลือกภาษาของแอป": {
+    "en": "Choose your app language",
+    "ko": "앱 언어를 선택하세요",
+    "ja": "アプリの言語を選択"
+  },
+  "เลือกสไตล์ที่ชอบ": {
+    "en": "Choose your style",
+    "ko": "화면 스타일 선택",
+    "ja": "表示スタイルを選択"
+  },
+  "สว่างในตอนกลางวัน สบายตาในตอนกลางคืน": {
+    "en": "Light by day, easy on the eyes at night",
+    "ko": "낮에는 밝게, 밤에는 편안하게",
+    "ja": "昼は明るく、夜は目にやさしく"
+  },
+  "สว่าง": {
+    "en": "Light",
+    "ko": "라이트",
+    "ja": "ライト"
+  },
+  "มืด": {
+    "en": "Dark",
+    "ko": "다크",
+    "ja": "ダーク"
+  },
+  "หน้าจอทำงานบน GitHub Pages · ฐานข้อมูล Google Sheet": {
+    "en": "UI hosted on GitHub Pages · Google Sheets database",
+    "ko": "GitHub Pages 화면 · Google Sheets 데이터베이스",
+    "ja": "GitHub Pagesの画面 · Google Sheetsデータベース"
+  },
+  "โหมดออฟไลน์ · ข้อมูลบันทึกในเบราว์เซอร์นี้เท่านั้น": {
+    "en": "Offline mode · Data stored only in this browser",
+    "ko": "오프라인 모드 · 이 브라우저에만 저장",
+    "ja": "オフラインモード · このブラウザーのみに保存"
+  },
+  "เปิดฐานข้อมูล": {
+    "en": "Open database",
+    "ko": "데이터베이스 열기",
+    "ja": "データベースを開く"
+  },
+  "รีเฟรช": {
+    "en": "Refresh",
+    "ko": "새로고침",
+    "ja": "更新"
+  },
+  "เชื่อมต่อ Google": {
+    "en": "Connect to Google",
+    "ko": "Google 연결",
+    "ja": "Googleに接続"
+  },
+  "ใช้บัญชี Google เจ้าของชีต แล้วกลับมากดเชื่อมต่ออีกครั้ง": {
+    "en": "Sign in with the sheet owner's Google account, then reconnect here.",
+    "ko": "시트 소유자의 Google 계정으로 로그인한 후 다시 연결하세요.",
+    "ja": "シート所有者のGoogleアカウントでログインしてから再接続してください。"
+  },
+  "ลงชื่อเข้าใช้ Google": {
+    "en": "Sign in to Google",
+    "ko": "Google 로그인",
+    "ja": "Googleにログイン"
+  },
+  "เชื่อมต่ออีกครั้ง": {
+    "en": "Reconnect",
+    "ko": "다시 연결",
+    "ja": "再接続"
+  },
+  "สำรองข้อมูล": {
+    "en": "Back up data",
+    "ko": "데이터 백업",
+    "ja": "データのバックアップ"
+  },
+  "ดาวน์โหลดข้อมูลทุกบัญชี รายการ และประวัติชำระหนี้": {
+    "en": "Download all accounts, transactions and payment history",
+    "ko": "모든 계좌, 거래 및 납부 내역 다운로드",
+    "ja": "すべての口座、取引、支払い履歴をダウンロード"
+  },
+  "ดาวน์โหลด JSON": {
+    "en": "Download JSON",
+    "ko": "JSON 다운로드",
+    "ja": "JSONをダウンロード"
+  },
+  "ทดลองด้วยข้อมูลตัวอย่าง": {
+    "en": "Try sample data",
+    "ko": "샘플 데이터 체험",
+    "ja": "サンプルデータを試す"
+  },
+  "ใช้ได้เมื่อยังไม่มีข้อมูล และจะไม่ส่งเข้าชีต": {
+    "en": "Available only with no existing data; samples are not sent to the sheet.",
+    "ko": "기존 데이터가 없을 때만 사용 가능하며 샘플은 시트로 전송되지 않습니다.",
+    "ja": "既存データがない場合のみ使用できます。サンプルはシートに送信されません。"
+  },
+  "ล้างข้อมูลตัวอย่าง": {
+    "en": "Clear sample data",
+    "ko": "샘플 데이터 지우기",
+    "ja": "サンプルデータを消去"
+  },
+  "โหลดตัวอย่าง": {
+    "en": "Load sample data",
+    "ko": "샘플 데이터 불러오기",
+    "ja": "サンプルデータを読み込む"
+  },
+  "ข้อมูลตัวอย่างสำหรับทดลองใช้งาน · ไม่ใช่ยอดเงินจริง": {
+    "en": "Sample data for testing · Not your actual balances",
+    "ko": "체험용 샘플 데이터 · 실제 잔액이 아닙니다",
+    "ja": "体験用サンプルデータ · 実際の残高ではありません"
+  },
+  "ยังไม่เชื่อมต่อ Google Sheet · เครื่องคิดเลขใช้งานได้": {
+    "en": "Google Sheets is not connected · Calculator is available",
+    "ko": "Google Sheets 미연결 · 계산기는 사용 가능합니다",
+    "ja": "Google Sheets未接続 · 電卓は使用できます"
+  },
+  "บันทึกในอุปกรณ์นี้": {
+    "en": "Saved on this device",
+    "ko": "이 기기에 저장됨",
+    "ja": "この端末に保存"
+  },
+  "โหมดทดลอง": {
+    "en": "Demo mode",
+    "ko": "데모 모드",
+    "ja": "デモモード"
+  },
+  "ยังไม่เชื่อม Google Sheet": {
+    "en": "Google Sheets not connected",
+    "ko": "Google Sheets 미연결",
+    "ja": "Google Sheets未接続"
+  },
+  "การเชื่อมต่อ": {
+    "en": "Connection",
+    "ko": "연결",
+    "ja": "接続"
+  },
+  "กำลังเชื่อมต่อ": {
+    "en": "Connecting",
+    "ko": "연결 중",
+    "ja": "接続中"
+  },
+  "รอเชื่อมต่อ Google": {
+    "en": "Waiting for Google connection",
+    "ko": "Google 연결 대기 중",
+    "ja": "Googleへの接続待ち"
+  },
+  "ออฟไลน์": {
+    "en": "Offline",
+    "ko": "오프라인",
+    "ja": "オフライン"
+  },
+  "ปิด": {
+    "en": "Close",
+    "ko": "닫기",
+    "ja": "閉じる"
+  },
+  "ชื่อบัญชี": {
+    "en": "Account name",
+    "ko": "계좌 이름",
+    "ja": "口座名"
+  },
+  "เช่น กสิกรไทย / เงินสด": {
+    "en": "e.g. Bank / Cash",
+    "ko": "예: 은행 / 현금",
+    "ja": "例：銀行 / 現金"
+  },
+  "ยอดเงินเริ่มต้น (บาท)": {
+    "en": "Opening balance (THB)",
+    "ko": "시작 잔액 (THB)",
+    "ja": "開始残高（THB）"
+  },
+  "สีบัญชี": {
+    "en": "Account color",
+    "ko": "계좌 색상",
+    "ja": "口座の色"
+  },
+  "ฟ้า": {
+    "en": "Blue",
+    "ko": "파랑",
+    "ja": "青"
+  },
+  "เขียว": {
+    "en": "Green",
+    "ko": "초록",
+    "ja": "緑"
+  },
+  "ม่วง": {
+    "en": "Purple",
+    "ko": "보라",
+    "ja": "紫"
+  },
+  "ส้ม": {
+    "en": "Orange",
+    "ko": "주황",
+    "ja": "オレンジ"
+  },
+  "บันทึกรายการ": {
+    "en": "Record transaction",
+    "ko": "거래 기록",
+    "ja": "取引を記録"
+  },
+  "รายจ่าย": {
+    "en": "Expense",
+    "ko": "지출",
+    "ja": "支出"
+  },
+  "รายรับ": {
+    "en": "Income",
+    "ko": "수입",
+    "ja": "収入"
+  },
+  "โอนเงิน": {
+    "en": "Transfer",
+    "ko": "이체",
+    "ja": "振替"
+  },
+  "จำนวนเงิน (บาท)": {
+    "en": "Amount (THB)",
+    "ko": "금액 (THB)",
+    "ja": "金額（THB）"
+  },
+  "รายละเอียด": {
+    "en": "Description",
+    "ko": "내용",
+    "ja": "内容"
+  },
+  "เช่น อาหารกลางวัน": {
+    "en": "e.g. Lunch",
+    "ko": "예: 점심",
+    "ja": "例：昼食"
+  },
+  "บัญชีต้นทาง": {
+    "en": "From account",
+    "ko": "출금 계좌",
+    "ja": "振替元口座"
+  },
+  "บัญชีปลายทาง": {
+    "en": "To account",
+    "ko": "입금 계좌",
+    "ja": "振替先口座"
+  },
+  "บัญชี": {
+    "en": "accounts",
+    "ko": "계좌",
+    "ja": "口座"
+  },
+  "หมวดหมู่": {
+    "en": "Category",
+    "ko": "분류",
+    "ja": "カテゴリー"
+  },
+  "วันที่ชำระ": {
+    "en": "Payment date",
+    "ko": "납부일",
+    "ja": "支払日"
+  },
+  "วันที่": {
+    "en": "Date",
+    "ko": "날짜",
+    "ja": "日付"
+  },
+  "เงินเดือน": {
+    "en": "Salary",
+    "ko": "급여",
+    "ja": "給与"
+  },
+  "งานเสริม": {
+    "en": "Side income",
+    "ko": "부수입",
+    "ja": "副収入"
+  },
+  "อื่น ๆ": {
+    "en": "Other",
+    "ko": "기타",
+    "ja": "その他"
+  },
+  "อาหาร": {
+    "en": "Food",
+    "ko": "식비",
+    "ja": "食費"
+  },
+  "เดินทาง": {
+    "en": "Transport",
+    "ko": "교통비",
+    "ja": "交通費"
+  },
+  "ช้อปปิ้ง": {
+    "en": "Shopping",
+    "ko": "쇼핑",
+    "ja": "買い物"
+  },
+  "ที่อยู่อาศัย": {
+    "en": "Housing",
+    "ko": "주거비",
+    "ja": "住居費"
+  },
+  "สุขภาพ": {
+    "en": "Health",
+    "ko": "건강",
+    "ja": "健康"
+  },
+  "ชื่อรายการหนี้": {
+    "en": "Bill name",
+    "ko": "납부 항목 이름",
+    "ja": "支払い名"
+  },
+  "เช่น ผ่อนรถ / บัตรเครดิต": {
+    "en": "e.g. Car payment / Credit card",
+    "ko": "예: 자동차 할부 / 신용카드",
+    "ja": "例：自動車ローン / クレジットカード"
+  },
+  "ยอดชำระต่อเดือน (บาท)": {
+    "en": "Monthly payment (THB)",
+    "ko": "월 납부액 (THB)",
+    "ja": "毎月の支払額（THB）"
+  },
+  "วันครบกำหนดของทุกเดือน": {
+    "en": "Due day of each month",
+    "ko": "매월 납부일",
+    "ja": "毎月の支払日"
+  },
+  "สถานะชำระแยกตามเดือน เริ่มตั้งแต่เดือนปัจจุบัน วันที่ 29–31 จะใช้วันสุดท้ายเมื่อเดือนนั้นมีวันไม่ถึง": {
+    "en": "Payment status is tracked separately for each month, starting this month. Days 29–31 use the last day of shorter months.",
+    "ko": "이번 달부터 월별로 납부 상태를 관리합니다. 29~31일이 없는 달은 마지막 날을 사용합니다.",
+    "ja": "今月から月ごとに支払状況を管理します。29〜31日がない月は月末を使用します。"
+  },
+  "ยอดชำระ": {
+    "en": "Payment amount",
+    "ko": "납부 금액",
+    "ja": "支払額"
+  },
+  "นี่คือการบันทึกบัญชีการเงินส่วนตัว": {
+    "en": "This records your personal finances",
+    "ko": "개인 재무 기록용입니다",
+    "ja": "個人の家計を記録する機能です"
+  },
+  "หักจากบัญชี": {
+    "en": "Pay from account",
+    "ko": "출금 계좌",
+    "ja": "支払元口座"
+  },
+  "บันทึก": {
+    "en": "Save",
+    "ko": "저장",
+    "ja": "保存"
+  },
+  "ชำระหนี้": {
+    "en": "Bill payment",
+    "ko": "납부",
+    "ja": "支払い"
+  },
+  "เดือนที่แสดง": {
+    "en": "Selected month",
+    "ko": "표시할 월",
+    "ja": "表示する月"
+  },
+  "เปลี่ยนโหมดสว่างหรือมืด": {
+    "en": "Switch light or dark mode",
+    "ko": "라이트/다크 모드 전환",
+    "ja": "ライト・ダークモードを切り替え"
+  },
+  "ติดตั้งแอป": {
+    "en": "Install app",
+    "ko": "앱 설치",
+    "ja": "アプリをインストール"
+  },
+  "ติดตั้ง A-mocashs": {
+    "en": "Install A-mocashs",
+    "ko": "A-mocashs 설치",
+    "ja": "A-mocashsをインストール"
+  },
+  "ปิดวิธีติดตั้ง": {
+    "en": "Close installation guide",
+    "ko": "설치 안내 닫기",
+    "ja": "インストール案内を閉じる"
+  },
+  "Android / Chrome / Edge: กดติดตั้งแอป หรือเมนูเบราว์เซอร์ → ติดตั้ง": {
+    "en": "Android / Chrome / Edge: Click Install app or use the browser menu → Install.",
+    "ko": "Android / Chrome / Edge: 앱 설치 또는 브라우저 메뉴 → 설치를 선택하세요.",
+    "ja": "Android / Chrome / Edge：「アプリをインストール」、またはブラウザーのメニュー→インストール。"
+  },
+  "iPhone / iPad: Safari → แชร์ → เพิ่มไปยังหน้าจอโฮม": {
+    "en": "iPhone / iPad: Safari → Share → Add to Home Screen.",
+    "ko": "iPhone / iPad: Safari → 공유 → 홈 화면에 추가.",
+    "ja": "iPhone / iPad：Safari→共有→ホーム画面に追加。"
+  },
+  "Mac / Safari: ไฟล์ → เพิ่มไปยัง Dock": {
+    "en": "Mac / Safari: File → Add to Dock.",
+    "ko": "Mac / Safari: 파일 → Dock에 추가.",
+    "ja": "Mac / Safari：ファイル→Dockに追加。"
+  },
+  "มีแอปเวอร์ชันใหม่": {
+    "en": "An app update is available",
+    "ko": "새 앱 버전이 있습니다",
+    "ja": "アプリの新しいバージョンがあります"
+  },
+  "อัปเดต": {
+    "en": "Update",
+    "ko": "업데이트",
+    "ja": "更新"
+  },
+  "บันทึกลง Google Sheet แล้ว": {
+    "en": "Saved to Google Sheets",
+    "ko": "Google Sheets에 저장되었습니다",
+    "ja": "Google Sheetsに保存しました"
+  },
+  "บันทึกในอุปกรณ์นี้แล้ว": {
+    "en": "Saved on this device",
+    "ko": "이 기기에 저장되었습니다",
+    "ja": "この端末に保存しました"
+  },
+  "บันทึกไม่สำเร็จ": {
+    "en": "Could not save",
+    "ko": "저장하지 못했습니다",
+    "ja": "保存できませんでした"
+  },
+  "ดำเนินการไม่สำเร็จ": {
+    "en": "Operation failed",
+    "ko": "작업에 실패했습니다",
+    "ja": "操作に失敗しました"
+  },
+  "เพิ่มบัญชีก่อนบันทึกรายการ": {
+    "en": "Add an account before recording a transaction",
+    "ko": "거래를 기록하기 전에 계좌를 추가하세요",
+    "ja": "取引を記録する前に口座を追加してください"
+  },
+  "เพิ่มบัญชีเพื่อชำระหนี้": {
+    "en": "Add an account to record a payment",
+    "ko": "납부를 기록하려면 계좌를 추가하세요",
+    "ja": "支払いを記録するには口座を追加してください"
+  },
+  "เชื่อมต่อ Google Sheet แล้ว": {
+    "en": "Connected to Google Sheets",
+    "ko": "Google Sheets에 연결되었습니다",
+    "ja": "Google Sheetsに接続しました"
+  },
+  "โหลดข้อมูลล่าสุดแล้ว": {
+    "en": "Latest data loaded",
+    "ko": "최신 데이터를 불러왔습니다",
+    "ja": "最新データを読み込みました"
+  },
+  "กำลังใช้ข้อมูลในอุปกรณ์นี้": {
+    "en": "Using data on this device",
+    "ko": "이 기기의 데이터를 사용 중입니다",
+    "ja": "この端末のデータを使用しています"
+  },
+  "ยอดที่บันทึกต้องมากกว่า 0": {
+    "en": "Amount must be greater than zero",
+    "ko": "금액은 0보다 커야 합니다",
+    "ja": "金額は0より大きい必要があります"
+  },
+  "กรุณาเชื่อมต่อ Google Sheet ก่อนบันทึก": {
+    "en": "Connect to Google Sheets before saving",
+    "ko": "저장하기 전에 Google Sheets에 연결하세요",
+    "ja": "保存する前にGoogle Sheetsに接続してください"
+  },
+  "กำลังบันทึก กรุณารอสักครู่": {
+    "en": "Saving, please wait",
+    "ko": "저장 중입니다. 잠시 기다려 주세요",
+    "ja": "保存中です。しばらくお待ちください"
+  },
+  "ยอดเงินในบัญชีไม่เพียงพอ": {
+    "en": "Insufficient account balance",
+    "ko": "계좌 잔액이 부족합니다",
+    "ja": "口座の残高が不足しています"
+  },
+  "รายการนี้ชำระแล้ว": {
+    "en": "This bill has already been paid",
+    "ko": "이미 납부한 항목입니다",
+    "ja": "この支払いは完了しています"
+  },
+  "ข้อมูลเปลี่ยนจากอุปกรณ์อื่น กรุณารีเฟรชแล้วลองอีกครั้ง": {
+    "en": "Data changed on another device. Refresh and try again.",
+    "ko": "다른 기기에서 데이터가 변경되었습니다. 새로고침 후 다시 시도하세요.",
+    "ja": "別の端末でデータが変更されました。更新してから再試行してください。"
+  },
+  "จำนวนเงินไม่ถูกต้อง": {
+    "en": "Invalid amount",
+    "ko": "올바르지 않은 금액입니다",
+    "ja": "金額が正しくありません"
+  },
+  "จำนวนเงินต้องมากกว่า 0": {
+    "en": "Amount must be greater than zero",
+    "ko": "금액은 0보다 커야 합니다",
+    "ja": "金額は0より大きい必要があります"
+  },
+  "สูตรไม่ถูกต้อง": {
+    "en": "Invalid expression",
+    "ko": "올바르지 않은 계산식입니다",
+    "ja": "計算式が正しくありません"
+  },
+  "วงเล็บไม่ครบ": {
+    "en": "Unbalanced parentheses",
+    "ko": "괄호가 맞지 않습니다",
+    "ja": "括弧が対応していません"
+  },
+  "ไม่สามารถหารด้วยศูนย์": {
+    "en": "Cannot divide by zero",
+    "ko": "0으로 나눌 수 없습니다",
+    "ja": "0で割ることはできません"
+  },
+  "กรุณาลงชื่อเข้าใช้ Google แล้วกดเชื่อมต่ออีกครั้ง": {
+    "en": "Sign in to Google, then reconnect.",
+    "ko": "Google에 로그인한 후 다시 연결하세요.",
+    "ja": "Googleにログインしてから再接続してください。"
+  },
+  "ต้องเชื่อมต่ออินเทอร์เน็ตเพื่อบันทึก Google Sheet": {
+    "en": "Internet is required to save to Google Sheets",
+    "ko": "Google Sheets에 저장하려면 인터넷 연결이 필요합니다",
+    "ja": "Google Sheetsに保存するにはインターネット接続が必要です"
+  },
+  "การเชื่อมต่อถูกรีเฟรช กรุณาลองอีกครั้ง": {
+    "en": "Connection refreshed. Please try again.",
+    "ko": "연결이 새로고침되었습니다. 다시 시도하세요.",
+    "ja": "接続を更新しました。再試行してください。"
+  },
+  "Google Sheet ไม่ตอบสนอง กรุณารีเฟรชเพื่อตรวจรายการก่อนบันทึกซ้ำ": {
+    "en": "Google Sheets did not respond. Refresh to check the record before saving again.",
+    "ko": "Google Sheets가 응답하지 않습니다. 다시 저장하기 전에 새로고침하여 기록을 확인하세요.",
+    "ja": "Google Sheetsから応答がありません。再保存する前に更新して記録を確認してください。"
+  },
+  "เชื่อม Google Sheet ไม่สำเร็จ: ": {
+    "en": "Could not connect to Google Sheets: ",
+    "ko": "Google Sheets 연결 실패: ",
+    "ja": "Google Sheetsへの接続に失敗しました："
+  },
+  "ไม่พบบัญชี": {
+    "en": "Account not found",
+    "ko": "계좌를 찾을 수 없습니다",
+    "ja": "口座が見つかりません"
+  },
+  "กรุณาเลือกบัญชี": {
+    "en": "Select an account",
+    "ko": "계좌를 선택하세요",
+    "ja": "口座を選択してください"
+  },
+  "ไม่พบรายการหนี้": {
+    "en": "Bill not found",
+    "ko": "납부 항목을 찾을 수 없습니다",
+    "ja": "支払いが見つかりません"
+  },
+  "เดือนชำระไม่ถูกต้อง": {
+    "en": "Invalid payment month",
+    "ko": "납부 월이 올바르지 않습니다",
+    "ja": "支払月が正しくありません"
+  },
+  "วันครบกำหนดต้องเป็น 1–31": {
+    "en": "Due day must be between 1 and 31",
+    "ko": "납부일은 1~31이어야 합니다",
+    "ja": "支払日は1〜31で指定してください"
+  },
+  "กรุณาระบุชื่อไม่เกิน 160 ตัวอักษร": {
+    "en": "Enter a name of up to 160 characters",
+    "ko": "이름은 160자 이내로 입력하세요",
+    "ja": "名前は160文字以内で入力してください"
+  },
+  "ข้อมูลรายการไม่ถูกต้อง": {
+    "en": "Invalid transaction data",
+    "ko": "거래 데이터가 올바르지 않습니다",
+    "ja": "取引データが正しくありません"
+  },
+  "ประเภทรายการไม่ถูกต้อง": {
+    "en": "Invalid transaction type",
+    "ko": "거래 유형이 올바르지 않습니다",
+    "ja": "取引の種類が正しくありません"
+  },
+  "บัญชีต้นทางและปลายทางต้องต่างกัน": {
+    "en": "Source and destination accounts must differ",
+    "ko": "출금 계좌와 입금 계좌는 달라야 합니다",
+    "ja": "振替元と振替先は別の口座にしてください"
+  },
+  "คำสั่งไม่ถูกต้อง": {
+    "en": "Invalid action",
+    "ko": "올바르지 않은 작업입니다",
+    "ja": "操作が正しくありません"
+  },
+  "สำหรับใช้งานข้อมูลจริง ให้เปิดแอปจาก Web App ของ Google Apps Script ที่ผูกกับชีตนี้": {
+    "en": "For your actual records, open the app on GitHub Pages and connect to Google.",
+    "ko": "실제 데이터를 사용하려면 GitHub Pages에서 앱을 열고 Google에 연결하세요.",
+    "ja": "実際の記録を使用するには、GitHub Pagesでアプリを開いてGoogleに接続してください。"
+  },
+  "เปิดส่วนขยาย → Apps Script ใน Google Sheet": {
+    "en": "In Google Sheets, open Extensions → Apps Script.",
+    "ko": "Google Sheets에서 확장 프로그램 → Apps Script를 여세요.",
+    "ja": "Google Sheetsで拡張機能→Apps Scriptを開きます。"
+  },
+  "ติดตั้งไฟล์ Code.gs และ Index.html จาก GitHub": {
+    "en": "Install the Code.gs backend file from GitHub.",
+    "ko": "GitHub의 Code.gs 백엔드 파일을 설치하세요.",
+    "ja": "GitHubのCode.gsバックエンドファイルを設定します。"
+  },
+  "ทำให้ใช้งานได้ → เว็บแอป → ดำเนินการในฐานะฉัน → สิทธิ์เฉพาะฉัน": {
+    "en": "Deploy → Web app → Execute as me → Only myself.",
+    "ko": "배포 → 웹 앱 → 나로 실행 → 나만 접근.",
+    "ja": "デプロイ→ウェブアプリ→自分として実行→自分のみ。"
+  },
+  "เปิด URL ของ Web App เพื่อบันทึกและอ่านข้อมูลจากชีต": {
+    "en": "Open GitHub Pages to read and record your data.",
+    "ko": "GitHub Pages에서 데이터를 조회하고 기록하세요.",
+    "ja": "GitHub Pagesでデータを確認・記録します。"
+  },
+  "ดูโค้ดและคู่มือบน GitHub": {
+    "en": "View code and guide on GitHub",
+    "ko": "GitHub에서 코드 및 안내 보기",
+    "ja": "GitHubでコードとガイドを表示"
+  },
+  "ล้างข้อมูลตัวอย่างแล้ว": {
+    "en": "Sample data cleared",
+    "ko": "샘플 데이터를 지웠습니다",
+    "ja": "サンプルデータを消去しました"
+  },
+  "มีข้อมูลอยู่แล้ว ไม่สามารถแทนที่ด้วยตัวอย่าง": {
+    "en": "Existing data cannot be replaced with samples.",
+    "ko": "기존 데이터를 샘플로 대체할 수 없습니다.",
+    "ja": "既存データをサンプルで置き換えることはできません。"
+  },
+  "ข้อมูลใกล้เต็ม กรุณาสำรองข้อมูลและติดต่อผู้ดูแลก่อนเพิ่มรายการ": {
+    "en": "Data is nearing capacity. Back up and contact the administrator before adding records.",
+    "ko": "데이터 용량이 거의 찼습니다. 추가 기록 전에 백업하고 관리자에게 문의하세요.",
+    "ja": "データ容量の上限が近づいています。追加する前にバックアップして管理者に連絡してください。"
+  },
+  "ปรับใช้ข้อมูลย้อนหลัง": {
+    "en": "Historical data",
+    "ko": "과거 데이터",
+    "ja": "過去のデータ"
+  }
+};
+(function(root){
+ 'use strict';
+ const locales={th:'th-TH',en:'en-GB',ko:'ko-KR',ja:'ja-JP'};
+ let language='th';try{const saved=localStorage.getItem('amocashs-language');if(locales[saved])language=saved;}catch{}
+ const dictionary=AMOCASHS_TRANSLATIONS;
+ const keys=Object.keys(dictionary).sort((a,b)=>b.length-a.length);
+ const pattern=new RegExp(keys.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g');
+ const originals=new WeakMap(),attributes=new WeakMap();
+ function text(value){const s=String(value??'');if(language==='th')return s;return s.replace(pattern,key=>dictionary[key]?.[language]||key);}
+ function html(strings,...values){return strings.reduce((result,segment,i)=>result+text(segment)+(i<values.length?values[i]:''),'');}
+ function applyStatic(){
+  document.documentElement.lang=language;document.title=text('A-mocashs • เงินของคุณ ในมุมที่ชัดเจน');
+  document.querySelectorAll('.sidebar,header,footer,#install-help,#update-banner').forEach(container=>{
+   const walker=document.createTreeWalker(container,NodeFilter.SHOW_TEXT);let node;
+   while((node=walker.nextNode())){if(node.parentElement?.closest('#status,#crumb'))continue;if(!originals.has(node))originals.set(node,node.textContent);node.textContent=text(originals.get(node));}
+   container.querySelectorAll('[aria-label],[placeholder]').forEach(el=>{if(!attributes.has(el))attributes.set(el,{label:el.getAttribute('aria-label'),placeholder:el.getAttribute('placeholder')});const original=attributes.get(el);if(original.label)el.setAttribute('aria-label',text(original.label));if(original.placeholder)el.setAttribute('placeholder',text(original.placeholder));});
+  });
+ }
+ const api={text,html,applyStatic,get language(){return language;},get locale(){return locales[language];},set(value){if(!locales[value])throw new Error('Unsupported language');language=value;try{localStorage.setItem('amocashs-language',value);}catch{}return language;}};
+ root.I18n=api;if(typeof module!=='undefined')module.exports=api;
+})(typeof window==='undefined'?globalThis:window);

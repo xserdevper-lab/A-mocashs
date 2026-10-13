@@ -1,4 +1,14 @@
-function doGet() { return HtmlService.createHtmlOutputFromFile('Index').setTitle('A-mocashs').addMetaTag('viewport','width=device-width, initial-scale=1'); }
+function doGet(e) {
+  let output=HtmlService.createHtmlOutputFromFile('Index');
+  if(e&&e.parameter&&e.parameter.pwa==='1') {
+    const guard='<style>.pwa-locked body{visibility:hidden!important;pointer-events:none!important}</style><script>const PWA_NONCE='+JSON.stringify(Utilities.getUuid())+';'+PWA_GUARD+'</script>';
+    output=HtmlService.createHtmlOutput(output.getContent().replace('</head>',()=>guard+'</head>'));
+    // Only the embedded variant allows framing. The nonce handshake keeps its
+    // interface locked until the trusted GitHub Pages origin acknowledges it.
+    output.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  }
+  return output.setTitle('A-mocashs').addMetaTag('viewport','width=device-width, initial-scale=1');
+}
 // An append-only snapshot log makes each commit one atomic Sheet row write.
 // The readable tabs are projections and are rebuilt from the committed snapshot.
 function book_() {

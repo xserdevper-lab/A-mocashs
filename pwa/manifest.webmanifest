@@ -1,0 +1,5 @@
+{
+ "id":"./","name":"A-mocashs — รายรับรายจ่าย","short_name":"A-mocashs","lang":"th","description":"บัญชีส่วนตัว รายรับรายจ่าย และหนี้รายเดือน เชื่อม Google Sheet",
+ "start_url":"./?source=pwa","scope":"./","display":"standalone","background_color":"#f5f7fb","theme_color":"#456ce8",
+ "icons":[{"src":"./icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"./icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},{"src":"./icons/maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}]
+}

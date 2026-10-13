@@ -4,5 +4,10 @@ for(const name of ['index.html','styles.css','core.js','app.js'])fs.copyFileSync
 let html=fs.readFileSync('src/index.html','utf8').replace('<link rel="stylesheet" href="styles.css">',()=>'<style>'+fs.readFileSync('src/styles.css','utf8')+'</style>');
 html=html.replace('<script src="core.js"></script>',()=>'<script>'+fs.readFileSync('src/core.js','utf8')+'</script>').replace('<script src="app.js"></script>',()=>'<script>'+fs.readFileSync('src/app.js','utf8')+'</script>');
 fs.writeFileSync('google-apps-script/Index.html',html);
-fs.writeFileSync('google-apps-script/Code.gs',fs.readFileSync('src/core.js','utf8')+'\n'+fs.readFileSync('src/backend.gs','utf8'));
-console.log('Built dist/ and Google Apps Script files.');
+fs.writeFileSync('google-apps-script/Code.gs',fs.readFileSync('src/core.js','utf8')+'\nconst PWA_GUARD='+JSON.stringify(fs.readFileSync('src/embed-guard.js','utf8'))+';\n'+fs.readFileSync('src/backend.gs','utf8'));
+fs.mkdirSync('docs',{recursive:true});fs.cpSync('pwa','docs',{recursive:true});
+fs.copyFileSync('src/core.js','docs/core.js');
+const keys=['C','(',')','⌫','7','8','9','÷','4','5','6','×','1','2','3','-','0','.','+','='];
+fs.writeFileSync('docs/index.html',fs.readFileSync('pwa/index.html','utf8').replace('${CALCULATOR_KEYS}',()=>keys.map(k=>'<button data-key="'+k+'">'+k+'</button>').join('')));
+fs.writeFileSync('docs/.nojekyll','');
+console.log('Built dist/, GitHub Pages PWA in docs/ and Google Apps Script files.');

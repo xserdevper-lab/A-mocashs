@@ -4,6 +4,16 @@
 
 ## เปิดใช้งาน
 
+[ติดตั้ง A-mocashs จาก GitHub Pages](https://xserdevper-lab.github.io/A-mocashs/)
+
+- Android / Chrome / Edge: เปิดลิงก์แล้วกด **ติดตั้งแอป** หรือใช้เมนูติดตั้งของเบราว์เซอร์
+- iPhone / iPad: เปิดด้วย Safari → แชร์ → **เพิ่มไปยังหน้าจอโฮม**
+- Mac / Safari: ไฟล์ → **เพิ่มไปยัง Dock**
+
+PWA ใช้ Google Sheet ชุดเดิมผ่านหน้าจอ Google ที่ลงชื่อเข้าใช้แล้ว ไม่ต้องย้ายข้อมูล ข้อมูลเงินจริงต้องออนไลน์ ถ้าเบราว์เซอร์บล็อกคุกกี้/การลงชื่อเข้าใช้ใน iframe ให้กด **เปิดแอปใน Google** และลงชื่อเข้าใช้ในแท็บ Google โดยตรง แล้วกลับมากดโหลดบัญชีอีกครั้ง เครื่องคิดเลขและหน้าติดตั้งใช้งานออฟไลน์ได้
+
+GitHub Pages เก็บเฉพาะหน้าติดตั้ง ไอคอน manifest และ service worker ข้อมูลการเงินอยู่ใน Google Sheet ส่วนตัว ไม่เผยแพร่ใน Pages และไม่ cache ข้อมูลการเงินผ่าน service worker
+
 [เปิดเว็บแอป A-mocashs](https://script.google.com/macros/s/AKfycby2CeqjaCPRyYlSOylsuGtQX8dSGTtYk7XLF72Vmwd3LbQT7TLo1bIMEpyo_t3yCl7L/exec)
 
 แอปจริงใช้ Google Sheet เป็นฐานข้อมูล และจำกัดสิทธิ์เฉพาะบัญชี Google เจ้าของ ลิงก์เว็บแบบ static/ออฟไลน์ใช้สำหรับทดลองเท่านั้น
@@ -52,6 +62,10 @@ python3 -m http.server 4173 --directory dist
 ```
 
 แก้ไขไฟล์ `src/` แล้ว build เพื่อสร้าง `dist/` และไฟล์ Apps Script ที่พร้อมติดตั้ง เมื่ออัปเดต Apps Script ให้สร้างเวอร์ชันใหม่ใน Manage deployments เพื่อให้ URL เดิมใช้เวอร์ชันใหม่
+
+ไฟล์ PWA อยู่ใน `pwa/` และ build เป็น `docs/` สำหรับ GitHub Pages ตั้งค่า Pages → Deploy from a branch → main → /docs เมื่อแก้ไฟล์ PWA ให้ build และ commit `docs/` ด้วย
+
+ตัวเลือก Google `?pwa=1` เปิดการฝังเฉพาะเวอร์ชันนั้น พร้อมตรวจ origin `https://xserdevper-lab.github.io` และ nonce ผ่าน postMessage ก่อนแสดงหน้าจอ เพื่อป้องกันเว็บไซต์อื่นนำไปฝังใช้งาน ส่วน URL `/exec` ปกติยังคงใช้ frame protection เริ่มต้นของ Google สิทธิ์เข้าเว็บแอปและการแชร์ชีตยังคงเป็นส่วนตัว
 
 ## ข้อจำกัด
 

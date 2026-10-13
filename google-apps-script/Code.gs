@@ -44,7 +44,18 @@
   const api={empty,cents,balance,apply,calculate};if(typeof module!=='undefined')module.exports=api;root.Finance=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
 
-function doGet() { return HtmlService.createHtmlOutputFromFile('Index').setTitle('A-mocashs').addMetaTag('viewport','width=device-width, initial-scale=1'); }
+const PWA_GUARD="// PWA_NONCE is generated separately for each Google response.\n(function(){\n 'use strict';\n const allowedParent='https://xserdevper-lab.github.io';\n document.documentElement.classList.add('pwa-locked');\n let unlocked=false,timer;\n function ready(){if(!unlocked)window.top.postMessage({kind:'amocashs-ready',nonce:PWA_NONCE},allowedParent);}\n window.addEventListener('message',event=>{\n   if(event.origin!==allowedParent||event.source!==window.top||event.data?.kind!=='amocashs-authorized-parent'||event.data.nonce!==PWA_NONCE)return;\n   unlocked=true;clearInterval(timer);document.documentElement.classList.remove('pwa-locked');\n });\n window.addEventListener('DOMContentLoaded',()=>{ready();timer=setInterval(ready,1000);setTimeout(()=>clearInterval(timer),30000);});\n})();\n";
+function doGet(e) {
+  let output=HtmlService.createHtmlOutputFromFile('Index');
+  if(e&&e.parameter&&e.parameter.pwa==='1') {
+    const guard='<style>.pwa-locked body{visibility:hidden!important;pointer-events:none!important}</style><script>const PWA_NONCE='+JSON.stringify(Utilities.getUuid())+';'+PWA_GUARD+'</script>';
+    output=HtmlService.createHtmlOutput(output.getContent().replace('</head>',()=>guard+'</head>'));
+    // Only the embedded variant allows framing. The nonce handshake keeps its
+    // interface locked until the trusted GitHub Pages origin acknowledges it.
+    output.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  }
+  return output.setTitle('A-mocashs').addMetaTag('viewport','width=device-width, initial-scale=1');
+}
 // An append-only snapshot log makes each commit one atomic Sheet row write.
 // The readable tabs are projections and are rebuilt from the committed snapshot.
 function book_() {

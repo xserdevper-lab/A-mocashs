@@ -1093,5 +1093,155 @@
     "en": "Our accounts",
     "ko": "우리의 계좌",
     "ja": "ふたりの口座"
+  },
+  "ปลดล็อกด้วยเครื่องนี้": {
+    "en": "Unlock with this device",
+    "ko": "이 기기로 잠금 해제",
+    "ja": "この端末でロック解除"
+  },
+  "ลงทะเบียนเครื่องนี้": {
+    "en": "Register this device",
+    "ko": "이 기기 등록",
+    "ja": "この端末を登録"
+  },
+  "ลงทะเบียนในเมนูการตั้งค่าหลังเข้าสู่ระบบด้วย Google ครั้งแรก": {
+    "en": "First sign in with Google, then register your device in Settings",
+    "ko": "먼저 Google로 로그인한 뒤 설정에서 기기를 등록하세요",
+    "ja": "最初にGoogleでログインし、設定から端末を登録してください"
+  },
+  "ใช้ PIN เครื่อง, Face ID หรือลายนิ้วมือแทนการเข้า Google ทุกครั้ง": {
+    "en": "Use your device PIN, Face ID or fingerprint for future sign-ins",
+    "ko": "다음 로그인부터 기기 PIN, Face ID 또는 지문을 사용하세요",
+    "ja": "次回から端末のPIN、Face ID、指紋を使用できます"
+  },
+  "ลงทะเบียนเฉพาะเครื่องที่คุณใช้เอง ระบบไม่รับหรือเก็บ PIN เครื่อง": {
+    "en": "Register only your own device. Your device PIN is never sent or stored.",
+    "ko": "본인 기기만 등록하세요. 기기 PIN은 전송하거나 저장하지 않습니다.",
+    "ja": "自分の端末だけを登録してください。端末のPINは送信・保存されません。"
+  },
+  "เครื่องนี้ยังไม่รองรับ Passkey กรุณาใช้ Google": {
+    "en": "Passkeys are unavailable on this device. Please use Google.",
+    "ko": "이 기기에서는 패스키를 사용할 수 없습니다. Google로 로그인해 주세요.",
+    "ja": "この端末ではパスキーを利用できません。Googleでログインしてください。"
+  },
+  "เครื่องของฉัน": {
+    "en": "My device",
+    "ko": "내 기기",
+    "ja": "自分の端末"
+  },
+  "ชื่อเครื่อง": {
+    "en": "Device name",
+    "ko": "기기 이름",
+    "ja": "端末名"
+  },
+  "ถอนสิทธิ์": {
+    "en": "Revoke",
+    "ko": "등록 해제",
+    "ja": "登録解除"
+  },
+  "ถอนสิทธิ์ Passkey": {
+    "en": "Revoke passkey",
+    "ko": "패스키 등록 해제",
+    "ja": "パスキーを登録解除"
+  },
+  "ยืนยันถอนสิทธิ์": {
+    "en": "Confirm revocation",
+    "ko": "등록 해제 확인",
+    "ja": "登録解除を確認"
+  },
+  "Passkey นี้จะใช้เข้าสู่แอปไม่ได้อีก คุณยังเข้าสู่ระบบด้วย Google ได้": {
+    "en": "This passkey will no longer work. You can still sign in with Google.",
+    "ko": "이 패스키로 더 이상 로그인할 수 없습니다. Google 로그인은 계속 사용할 수 있습니다.",
+    "ja": "このパスキーは使えなくなります。Googleログインは引き続き利用できます。"
+  },
+  "ยังไม่มี Passkey ของบัญชีนี้": {
+    "en": "No passkeys registered for this account",
+    "ko": "이 계정에 등록된 패스키가 없습니다",
+    "ja": "このアカウントにはパスキーが登録されていません"
+  },
+  "ลงทะเบียนแล้ว ครั้งต่อไปปลดล็อกด้วยเครื่องนี้ได้": {
+    "en": "Registered. Next time, unlock with this device.",
+    "ko": "등록되었습니다. 다음에는 이 기기로 잠금을 해제하세요.",
+    "ja": "登録しました。次回からこの端末でロック解除できます。"
+  },
+  "พร้อมแล้ว กรุณากดปลดล็อกอีกครั้ง": {
+    "en": "Ready. Please tap unlock again.",
+    "ko": "준비되었습니다. 잠금 해제를 다시 누르세요.",
+    "ja": "準備できました。もう一度ロック解除を押してください。"
+  },
+  "พร้อมแล้ว กรุณากดลงทะเบียนอีกครั้ง": {
+    "en": "Ready. Please tap register again.",
+    "ko": "준비되었습니다. 등록을 다시 누르세요.",
+    "ja": "準備できました。もう一度登録を押してください。"
+  },
+  "ถอนสิทธิ์ Passkey แล้ว": {
+    "en": "Passkey revoked",
+    "ko": "패스키 등록이 해제되었습니다",
+    "ja": "パスキーを登録解除しました"
+  },
+  "ยกเลิกการยืนยันหรือไม่พบ Passkey ในเครื่องนี้": {
+    "en": "Verification cancelled or no passkey found on this device",
+    "ko": "인증이 취소되었거나 이 기기에 패스키가 없습니다",
+    "ja": "認証がキャンセルされたか、この端末にパスキーがありません"
+  },
+  "เครื่องนี้มี Passkey ของบัญชีนี้แล้ว": {
+    "en": "A passkey for this account is already on this device",
+    "ko": "이 기기에 이 계정의 패스키가 이미 있습니다",
+    "ja": "この端末にはこのアカウントのパスキーがすでにあります"
+  },
+  "ข้อมูล Passkey ไม่ถูกต้อง": {
+    "en": "Invalid passkey response",
+    "ko": "잘못된 패스키 응답",
+    "ja": "パスキーの応答が無効です"
+  },
+  "ไม่สามารถยืนยัน Passkey ได้": {
+    "en": "Could not verify the passkey",
+    "ko": "패스키를 확인할 수 없습니다",
+    "ja": "パスキーを確認できません"
+  },
+  "กรุณายืนยันด้วย PIN เครื่องหรือลายนิ้วมือ": {
+    "en": "Please verify with your device PIN or biometrics",
+    "ko": "기기 PIN 또는 생체 인식으로 인증하세요",
+    "ja": "端末のPINまたは生体認証で確認してください"
+  },
+  "คำขอ Passkey หมดอายุ กรุณาลองอีกครั้ง": {
+    "en": "Passkey request expired. Please retry.",
+    "ko": "패스키 요청이 만료되었습니다. 다시 시도하세요.",
+    "ja": "パスキーの要求が期限切れです。再試行してください。"
+  },
+  "ไม่มีสิทธิ์ลงทะเบียน Passkey นี้": {
+    "en": "You cannot register this passkey",
+    "ko": "이 패스키를 등록할 권한이 없습니다",
+    "ja": "このパスキーを登録する権限がありません"
+  },
+  "รูปแบบ Passkey นี้ยังไม่รองรับ": {
+    "en": "This passkey format is not supported",
+    "ko": "이 패스키 형식은 지원되지 않습니다",
+    "ja": "このパスキー形式には対応していません"
+  },
+  "Passkey นี้ลงทะเบียนแล้วหรือครบจำนวนที่รองรับ": {
+    "en": "Passkey already registered or account limit reached",
+    "ko": "이미 등록된 패스키이거나 등록 한도에 도달했습니다",
+    "ja": "登録済みのパスキーか、登録数の上限に達しました"
+  },
+  "ลงทะเบียน Passkey ได้ไม่เกิน 10 รายการ": {
+    "en": "You can register up to 10 passkeys",
+    "ko": "패스키를 최대 10개까지 등록할 수 있습니다",
+    "ja": "パスキーは10個まで登録できます"
+  },
+  "Passkey นี้ไม่มีสิทธิ์เข้าแอป": {
+    "en": "This passkey is not registered for this app",
+    "ko": "이 패스키는 이 앱에 등록되어 있지 않습니다",
+    "ja": "このパスキーはこのアプリに登録されていません"
+  },
+  "Passkey ไม่ผ่านการตรวจสอบการใช้งานซ้ำ": {
+    "en": "Passkey replay check failed",
+    "ko": "패스키 재사용 검사에 실패했습니다",
+    "ja": "パスキーのリプレイ検証に失敗しました"
+  },
+  "ไม่มีสิทธิ์ลบ Passkey นี้": {
+    "en": "You cannot revoke this passkey",
+    "ko": "이 패스키를 해제할 권한이 없습니다",
+    "ja": "このパスキーを解除する権限がありません"
   }
 }

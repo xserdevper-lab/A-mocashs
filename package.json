@@ -1,1 +1,16 @@
-{"name":"a-mocashs","version":"1.0.0","private":true,"scripts":{"build":"node scripts/build.mjs","test":"node --test tests/*.test.cjs"}}
+{
+  "name": "a-mocashs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.cjs",
+    "build:crypto": "esbuild scripts/passkey-crypto-entry.js --bundle --format=iife --global-name=PasskeyCrypto --platform=neutral --target=es2020 --minify --inject:./scripts/passkey-polyfills.js --outfile=vendor/passkey-crypto.gs && node scripts/normalize-crypto.cjs"
+  },
+  "devDependencies": {
+    "@noble/curves": "2.4.0",
+    "@levischuck/tiny-cbor": "0.3.6",
+    "esbuild": "0.28.2",
+    "acorn": "8.15.0"
+  }
+}

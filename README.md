@@ -61,7 +61,7 @@ Log ของส่วนรวมใช้ `Amocashs_Log` เดิม ไม�
 
 ## พัฒนาและทดสอบ
 
-ต้องมี Node.js 18 ขึ้นไป ไม่มี dependency ที่ต้องติดตั้ง
+ต้องมี Node.js 18 ขึ้นไป build และทดสอบจาก vendor bundle ได้โดยไม่ต้องติดตั้ง dependency; หากแก้ crypto bundle ให้ `npm install` แล้ว `npm run build:crypto`
 
 ```sh
 npm test
@@ -82,3 +82,13 @@ UI หลักอยู่ใน `src/` และ PWA manifest/icons/service wo
 - Snapshot จำกัดประมาณ 2 ล้านตัวอักษร และจำนวนการเรียกใช้อยู่ภายใต้โควตา Google Apps Script/Google Sheets
 - ข้อมูลแบบออฟไลน์อาจหายเมื่อเคลียร์ข้อมูลเบราว์เซอร์ ควรดาวน์โหลดสำรองข้อมูล
 - CSV ส่งออกเฉพาะรายการตามตัวกรองที่เลือก JSON สำรองทุกบัญชีในพื้นที่ที่เลือก
+
+## ปลดล็อกด้วยเครื่องนี้ (Passkey)
+
+เข้า Google ครั้งแรก → การตั้งค่า → ตั้งชื่อเครื่อง → ลงทะเบียนเครื่องนี้ → ยืนยันผ่าน PIN/Face ID/ลายนิ้วมือในหน้าต่างของระบบ ครั้งต่อไปใช้ปุ่ม “ปลดล็อกด้วยเครื่องนี้” ที่หน้าล็อกอินได้ ไม่ต้องส่งหรือเก็บ PIN เครื่องไว้ในแอป หากไม่รองรับหรือไม่พบ Passkey ยังใช้ Google Login ได้
+
+Passkey ผูกกับบัญชีที่ Google ยืนยันไว้ ไม่เปลี่ยนบัญชีส่วนตัวหรือข้อมูลส่วนรวม กุญแจสาธารณะและข้อมูลลงทะเบียนเก็บใน Script Properties; private key อยู่ใน authenticator/ผู้จัดการ Passkey ของเครื่อง ผู้ให้บริการอาจซิงก์ Passkey ไปยังอุปกรณ์ของเจ้าของบัญชีได้ ถอนสิทธิ์เฉพาะรายการของตัวเองได้ใน Settings ซึ่งยกเลิกเซสชันที่ออกจาก Passkey นั้นด้วย การถอนสิทธิ์ในแอปไม่ได้ลบรายการจากผู้จัดการ Passkey ของเครื่อง
+
+WebAuthn ใช้ RP ID `xserdevper-lab.github.io` และตรวจ origin เดียวกัน มี challenge แบบใช้ครั้งเดียวหมดอายุ 5 นาที บังคับ user verification และ resident key ตรวจ RP hash, user handle, ลายเซ็น ES256 และ sign counter แบบมาตรฐาน รองรับกุญแจ ES256/attestation none และลงทะเบียนได้สูงสุด 10 รายการต่อบัญชี
+
+`vendor/passkey-crypto.gs` ใช้ @noble/curves/@noble/hashes 2.4.0 และ @levischuck/tiny-cbor 0.3.6 ที่ bundle ไว้สำหรับ Apps Script V8 มีใบอนุญาตและ package integrity ใน vendor/ ไม่โหลดโค้ด crypto จาก CDN ขณะทำงาน

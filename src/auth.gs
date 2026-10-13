@@ -31,18 +31,24 @@ function authenticateGoogle(accessToken,challenge) {
   const bindingKey='MEMBER_SUB_'+digest_(email),bound=properties.getProperty(bindingKey);
   if(bound&&bound!==profile.sub)throw new Error('ไม่สามารถยืนยันบัญชี Google ได้');
   if(!bound)properties.setProperty(bindingKey,profile.sub);
-  const token=Utilities.getUuid()+Utilities.getUuid(),expires=Date.now()+21600000;
-  const user={id:digest_(profile.sub).slice(0,24),email,name:String(profile.name||email),owner:email===members[0],expires};
-  cache.put('session:'+digest_(token),JSON.stringify(user),21600);
-  return {token,user};
+  return createSession_({id:digest_(profile.sub).slice(0,24),email,name:String(profile.name||email)});
  }finally{lock.releaseLock();}
+}
+function createSession_(identity,passkeyKey){
+ const members=JSON.parse(PropertiesService.getScriptProperties().getProperty('MEMBER_EMAILS')||'[]');
+ if(!members.includes(identity.email))throw new Error('บัญชีนี้ไม่มีสิทธิ์เข้าใช้แอป');
+ const token=Utilities.getUuid()+Utilities.getUuid();
+ const user={id:identity.id,email:identity.email,name:identity.name,owner:identity.email===members[0],expires:Date.now()+21600000};
+ if(passkeyKey)user.passkeyKey=passkeyKey;
+ CacheService.getScriptCache().put('session:'+digest_(token),JSON.stringify(user),21600);
+ return {token,user};
 }
 function session_(token){
  if(typeof token!=='string'||token.length!==72)throw new Error('กรุณาเข้าสู่ระบบ');
  const raw=CacheService.getScriptCache().get('session:'+digest_(token));
  if(!raw)throw new Error('เซสชันหมดอายุ กรุณาเข้าสู่ระบบอีกครั้ง');
  const user=JSON.parse(raw),members=JSON.parse(PropertiesService.getScriptProperties().getProperty('MEMBER_EMAILS')||'[]');
- if(user.expires<=Date.now()||!members.includes(user.email))throw new Error('เซสชันหมดอายุ กรุณาเข้าสู่ระบบอีกครั้ง');
+ if(user.expires<=Date.now()||!members.includes(user.email)||(user.passkeyKey&&!PropertiesService.getScriptProperties().getProperty(user.passkeyKey)))throw new Error('เซสชันหมดอายุ กรุณาเข้าสู่ระบบอีกครั้ง');
  return user;
 }
 function sessionInfo(token){return session_(token);}

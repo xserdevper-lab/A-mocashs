@@ -43,13 +43,13 @@ GitHub Pages และ service worker เก็บเฉพาะ UI สาธ�
 ฐานข้อมูล: https://docs.google.com/spreadsheets/d/16cELFn6q08ITvp8uT-3PKHfsAf-R7wIMNH6t6DgTd5U/edit
 
 1. เปิด Google Sheet → ส่วนขยาย → Apps Script แล้ววาง `google-apps-script/Code.gs`
-2. สร้าง OAuth Client ประเภท Web application ใน Google Auth Platform โดยกำหนด Authorized JavaScript origin เป็น `https://xserdevper-lab.github.io` ตัว Client ID เป็นข้อมูลสาธารณะ ไม่ต้องใส่ Client Secret ใน UI
+2. สร้าง OAuth Client ประเภท Web application ใน Google Auth Platform โดยกำหนด Authorized JavaScript origin เป็น `https://xserdevper-lab.github.io` Authorized redirect URI เป็น `https://xserdevper-lab.github.io/A-mocashs/` ตัว Client ID เป็นข้อมูลสาธารณะ ไม่ต้องใส่ Client Secret ใน UI
 3. ตั้ง Script Properties `GOOGLE_CLIENT_ID` เป็น Client ID และ `MEMBER_EMAILS` เป็น JSON array ของอีเมลสองคน (เจ้าของเป็นรายการแรก) เก็บค่าจริงใน Script Properties เท่านั้น ไม่ commit อีเมลส่วนตัวลง GitHub
 4. Deploy เป็น Web app → execute as **ฉัน** → access **ทุกคน** ตัวช่องทางรับส่งเข้าถึงได้ แต่ทุกการอ่าน/เขียนต้องมีเซสชันที่ตรวจสอบแล้ว อย่าเปิด access ทุกคนกับ backend รุ่นเก่าที่ไม่มี `src/auth.gs`
 5. เจ้าของอนุญาต scope ของ Spreadsheet และการเรียก HTTPS ภายนอกเพื่อยืนยัน Google Token แอปขอจากผู้ใช้เพียง `openid email profile` ไม่ขอรหัสผ่าน Google หรือสิทธิ์อ่าน Google Drive ของแฟน
 6. ใช้ URL deployment นี้ใน `src/bridge-client.js` แล้ว build/publish `docs/` ตั้ง Sheet sharing เป็น **จำกัด** ต่อไป
 
-ระบบยืนยัน Google Access Token กับ token-info และ userinfo ของ Google ผ่าน HTTPS ตรวจ client audience, token expiry, verified email และรายชื่อสมาชิก พร้อมผูก Google subject ID ป้องกันการสลับตัวตน รายชื่อสมาชิกไม่ถูกส่งไป UI เซสชันเป็น token สุ่ม เก็บ hash ฝั่งเซิร์ฟเวอร์และยกเลิกเมื่อออกจากระบบ
+ระบบยืนยัน Google Access Token กับ token-info และ userinfo ของ Google ผ่าน HTTPS ตรวจ client audience, token expiry, verified email และรายชื่อสมาชิก พร้อมผูก Google subject ID ป้องกันการสลับตัวตน รายชื่อสมาชิกไม่ถูกส่งไป UI หน้า Google เปิดโดยตรงแล้วกลับมาที่ GitHub โดยตรวจ OAuth state แบบใช้ครั้งเดียวและลบ token จาก URL ทันที ข้อมูลใน sessionStorage มีเฉพาะคำขอตรวจ CSRF ไม่เก็บ token หรือข้อมูลการเงิน เซสชันเป็น token สุ่ม เก็บ hash ฝั่งเซิร์ฟเวอร์และยกเลิกเมื่อออกจากระบบ
 
 Log ของส่วนรวมใช้ `Amocashs_Log` เดิม ไม่มีการย้ายหรือล้างข้อมูล ส่วนตัวใช้ `Private_<user-id>_Log` แต่ละพื้นที่มีตาราง Accounts, Transactions, Debts และ Payments เป็น projection ของ log อย่าแก้ไขตารางโดยตรง เรียก `rebuildViews_` ใน editor เพื่อสร้างตารางส่วนรวมใหม่ได้
 

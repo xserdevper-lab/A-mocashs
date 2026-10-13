@@ -1,0 +1,1 @@
+{"name":"a-mocashs","version":"1.0.0","private":true,"scripts":{"build":"node scripts/build.mjs","test":"node --test tests/*.test.cjs"}}

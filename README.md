@@ -10,13 +10,19 @@
 - iPhone / iPad: เปิดด้วย Safari → แชร์ → **เพิ่มไปยังหน้าจอโฮม**
 - Mac / Safari: ไฟล์ → **เพิ่มไปยัง Dock**
 
-UI ทุกหน้าทำงานจาก HTML/CSS/JavaScript บน GitHub Pages โดยตรง Google Apps Script เป็น backend รับส่งข้อมูลกับ Google Sheet เท่านั้น ไม่แสดงหน้าบัญชีใน iframe และไม่ต้องย้ายข้อมูล ข้อมูลเงินจริงต้องออนไลน์ ถ้าเบราว์เซอร์บล็อกการลงชื่อเข้าใช้ ให้เปิด Settings → ลงชื่อเข้าใช้ Google แล้วกลับมากดเชื่อมต่ออีกครั้ง UI และเครื่องคิดเลขใช้งานออฟไลน์ได้ การอ่าน/เขียนข้อมูลจริงต้องออนไลน์
+UI ทุกหน้าทำงานจาก HTML/CSS/JavaScript บน GitHub Pages โดยตรง Google Apps Script เป็น backend รับส่งข้อมูลกับ Google Sheet เท่านั้น iframe ที่ซ่อนทำหน้าที่ส่งคำสั่ง ไม่มี UI ของแอปอยู่บน Google
 
-GitHub Pages เก็บเฉพาะหน้าติดตั้ง ไอคอน manifest และ service worker ข้อมูลการเงินอยู่ใน Google Sheet ส่วนตัว ไม่เผยแพร่ใน Pages และไม่ cache ข้อมูลการเงินผ่าน service worker
+## เข้าสู่ระบบและเลือกพื้นที่
 
-[เปิดเว็บแอป A-mocashs](https://script.google.com/macros/s/AKfycby2CeqjaCPRyYlSOylsuGtQX8dSGTtYk7XLF72Vmwd3LbQT7TLo1bIMEpyo_t3yCl7L/exec)
+- เข้าแอปแล้วกด **เข้าสู่ระบบด้วย Google** ใช้ได้เฉพาะอีเมลสองบัญชีที่ตั้งไว้ฝั่งเซิร์ฟเวอร์
+- **ส่วนรวม**: ทั้งสองคนอ่าน/บันทึกบัญชี รายการ และหนี้ร่วมกัน ข้อมูลเดิมทั้งหมดอยู่ในพื้นที่นี้
+- **ส่วนตัว**: บัญชี รายการ และหนี้แยกตามผู้ใช้ เซิร์ฟเวอร์เลือกพื้นที่จากตัวตนที่ Google ยืนยัน ผู้ใช้ระบุ ID ของอีกคนเพื่อขอข้อมูลไม่ได้
+- กด **ออกจากระบบ** ก่อนเปลี่ยนผู้ใช้หรือคืนอุปกรณ์ เซสชันหมดอายุไม่เกิน 6 ชั่วโมง และต้องเข้าสู่ระบบใหม่เมื่อโหลดหน้าใหม่
+- การสำรอง JSON/CSV ใช้เฉพาะข้อมูลในพื้นที่ที่เลือก
 
-ลิงก์ Google ใช้ลงชื่อเข้าใช้ backend เท่านั้น เปิดแอปที่ GitHub Pages เพื่อใช้งานทุกหน้าจอ สิทธิ์เข้า backend และชีตจำกัดเฉพาะบัญชี Google เจ้าของ
+GitHub Pages และ service worker เก็บเฉพาะ UI สาธารณะ ไม่เก็บข้อมูลการเงินหรือข้อมูลเข้าสู่ระบบ ข้อมูลจริงอยู่ในหน่วยความจำของหน้าและ Google Sheet ซึ่งตั้งการแชร์เป็น **จำกัด** ไม่ต้องแชร์ชีตให้ผู้ใช้อีกคน
+
+การแยกส่วนตัวเป็นสิทธิ์ภายในแอป เจ้าของ Google Sheet/ผู้ดูแล Apps Script ยังมีสิทธิ์ดูข้อมูลดิบทุกพื้นที่ในฐานข้อมูล
 
 ## ภาษา
 
@@ -36,18 +42,16 @@ GitHub Pages เก็บเฉพาะหน้าติดตั้ง ไอ
 
 ฐานข้อมูล: https://docs.google.com/spreadsheets/d/16cELFn6q08ITvp8uT-3PKHfsAf-R7wIMNH6t6DgTd5U/edit
 
-1. เปิด Google Sheet → ส่วนขยาย → Apps Script
-2. วางเนื้อหา `google-apps-script/Code.gs` ในไฟล์สคริปต์ ไม่ต้องติดตั้งไฟล์ UI ใน Google
-3. การทำให้ใช้งานได้ → การทำให้ใช้งานได้รายการใหม่ → เว็บแอป
-4. ดำเนินการในฐานะ **ฉัน** และผู้ที่มีสิทธิ์เข้าถึง **ฉันเท่านั้น**
-5. อนุญาต Google ให้แอปอ่าน/เขียน Google Sheets แล้วเปิดหน้า GitHub Pages เพื่อใช้งาน (URL `/exec` ใช้ยืนยัน Google)
-6. ตั้งค่าการแชร์ Sheet เป็น **จำกัด** ก่อนกรอกข้อมูลการเงินจริง
+1. เปิด Google Sheet → ส่วนขยาย → Apps Script แล้ววาง `google-apps-script/Code.gs`
+2. สร้าง OAuth Client ประเภท Web application ใน Google Auth Platform โดยกำหนด Authorized JavaScript origin เป็น `https://xserdevper-lab.github.io` ตัว Client ID เป็นข้อมูลสาธารณะ ไม่ต้องใส่ Client Secret ใน UI
+3. ตั้ง Script Properties `GOOGLE_CLIENT_ID` เป็น Client ID และ `MEMBER_EMAILS` เป็น JSON array ของอีเมลสองคน (เจ้าของเป็นรายการแรก) เก็บค่าจริงใน Script Properties เท่านั้น ไม่ commit อีเมลส่วนตัวลง GitHub
+4. Deploy เป็น Web app → execute as **ฉัน** → access **ทุกคน** ตัวช่องทางรับส่งเข้าถึงได้ แต่ทุกการอ่าน/เขียนต้องมีเซสชันที่ตรวจสอบแล้ว อย่าเปิด access ทุกคนกับ backend รุ่นเก่าที่ไม่มี `src/auth.gs`
+5. เจ้าของอนุญาต scope ของ Spreadsheet และการเรียก HTTPS ภายนอกเพื่อยืนยัน Google Token แอปขอจากผู้ใช้เพียง `openid email profile` ไม่ขอรหัสผ่าน Google หรือสิทธิ์อ่าน Google Drive ของแฟน
+6. ใช้ URL deployment นี้ใน `src/bridge-client.js` แล้ว build/publish `docs/` ตั้ง Sheet sharing เป็น **จำกัด** ต่อไป
 
-โค้ดเรียกชีตด้วย ID ที่ระบุเท่านั้น แต่ Google ขอ OAuth scope ของบริการ Spreadsheet ซึ่งครอบคลุมสิทธิ์จัดการ Google Sheets ไม่ใช่เพียงไฟล์เดียว จึงต้องให้เจ้าของบัญชียืนยันสิทธิ์ด้วยตนเองหรืออนุญาตอย่างชัดเจน
+ระบบยืนยัน Google Access Token กับ token-info และ userinfo ของ Google ผ่าน HTTPS ตรวจ client audience, token expiry, verified email และรายชื่อสมาชิก พร้อมผูก Google subject ID ป้องกันการสลับตัวตน รายชื่อสมาชิกไม่ถูกส่งไป UI เซสชันเป็น token สุ่ม เก็บ hash ฝั่งเซิร์ฟเวอร์และยกเลิกเมื่อออกจากระบบ
 
-แอปจะสร้างแท็บ `Amocashs_Accounts`, `Amocashs_Transactions`, `Amocashs_Debts`, `Amocashs_Payments` และ `Amocashs_Log` เมื่อเริ่มบันทึก ไม่แก้ไขชีตเดิมชื่ออื่น
-
-Log เป็นแหล่งข้อมูลหลักแบบ append-only เพื่อให้ยอดเงินและสถานะหนี้บันทึกพร้อมกัน แท็บอื่นเป็นตารางที่สร้างจาก log อย่าแก้ไขตารางเหล่านี้โดยตรง หากตารางแสดงไม่ครบ เรียก `rebuildViews` จาก Apps Script เพื่อสร้างใหม่ ข้อมูลใช้หน่วยสตางค์ภายในและแสดงหน่วยบาทในตาราง
+Log ของส่วนรวมใช้ `Amocashs_Log` เดิม ไม่มีการย้ายหรือล้างข้อมูล ส่วนตัวใช้ `Private_<user-id>_Log` แต่ละพื้นที่มีตาราง Accounts, Transactions, Debts และ Payments เป็น projection ของ log อย่าแก้ไขตารางโดยตรง เรียก `rebuildViews_` ใน editor เพื่อสร้างตารางส่วนรวมใหม่ได้
 
 ป้องกันการเขียนทับจากหลายอุปกรณ์ด้วย script lock, revision และ request ID เมื่อข้อมูลเปลี่ยนจากอีกอุปกรณ์ แอปจะโหลดข้อมูลล่าสุดและขอให้บันทึกใหม่ ระบบยังไม่มีการแก้ไข/ลบรายการย้อนหลัง ควรตรวจข้อมูลก่อนบันทึก
 
@@ -69,7 +73,7 @@ python3 -m http.server 4173 --directory dist
 
 UI หลักอยู่ใน `src/` และ PWA manifest/icons/service worker อยู่ใน `pwa/` เมื่อ build จะรวมเป็น `docs/` สำหรับ GitHub Pages ตั้งค่า Pages → Deploy from a branch → main → /docs เมื่อแก้ไฟล์ PWA ให้ build และ commit `docs/` ด้วย
 
-ช่องทางข้อมูล Google `?bridge=1` เป็น iframe ที่ซ่อนและไม่มี UI ทำหน้าที่ส่งคำสั่ง `getState` และ `mutate` ผ่าน `google.script.run` โดยตรวจ origin `https://xserdevper-lab.github.io`, แหล่งหน้าต่าง, nonce และ client challenge ก่อนรับส่งข้อมูล ข้อมูลการเงินอยู่เฉพาะหน่วยความจำเบราว์เซอร์และ Google Sheet ไม่เก็บใน localStorage ของโหมดจริง และไม่ cache ด้วย service worker สิทธิ์เข้าถึงยังคงเป็นส่วนตัว
+ช่องทางข้อมูล Google `?bridge=1` ตรวจ origin, หน้าต่าง, nonce และ client challenge ก่อนรับข้อความ ทุก endpoint อ่าน/เขียนตรวจเซสชันและ scope ฝั่งเซิร์ฟเวอร์ ฟังก์ชันภายในลงท้าย `_` เพื่อป้องกันการเรียกผ่าน `google.script.run` โดยตรง
 
 ## ข้อจำกัด
 
@@ -77,4 +81,4 @@ UI หลักอยู่ใน `src/` และ PWA manifest/icons/service wo
 - หนี้เป็นยอดคงที่ต่อเดือน ไม่มีการคำนวณดอกเบี้ย/ตัดเงินต้น
 - Snapshot จำกัดประมาณ 2 ล้านตัวอักษร และจำนวนการเรียกใช้อยู่ภายใต้โควตา Google Apps Script/Google Sheets
 - ข้อมูลแบบออฟไลน์อาจหายเมื่อเคลียร์ข้อมูลเบราว์เซอร์ ควรดาวน์โหลดสำรองข้อมูล
-- CSV ส่งออกเฉพาะรายการตามตัวกรองที่เลือก JSON สำรองทุกบัญชี
+- CSV ส่งออกเฉพาะรายการตามตัวกรองที่เลือก JSON สำรองทุกบัญชีในพื้นที่ที่เลือก

@@ -2,7 +2,7 @@ import fs from 'node:fs';
 fs.writeFileSync('src/i18n.js','const AMOCASHS_TRANSLATIONS='+fs.readFileSync('src/translations.json','utf8')+';\n'+fs.readFileSync('src/i18n-runtime.js','utf8'));
 fs.mkdirSync('dist',{recursive:true});fs.mkdirSync('google-apps-script',{recursive:true});
 for(const name of ['index.html','styles.css','core.js','app.js','i18n.js'])fs.copyFileSync('src/'+name,'dist/'+name);
-fs.writeFileSync('google-apps-script/Code.gs',fs.readFileSync('src/core.js','utf8')+'\nconst BRIDGE_SERVER='+JSON.stringify(fs.readFileSync('src/bridge-server.js','utf8'))+';\n'+fs.readFileSync('src/backend.gs','utf8'));
+fs.writeFileSync('google-apps-script/Code.gs',fs.readFileSync('src/core.js','utf8')+'\nconst BRIDGE_SERVER='+JSON.stringify(fs.readFileSync('src/bridge-server.js','utf8'))+';\n'+fs.readFileSync('src/auth.gs','utf8')+'\n'+fs.readFileSync('src/backend.gs','utf8'));
 fs.mkdirSync('docs',{recursive:true});fs.cpSync('pwa/icons','docs/icons',{recursive:true});
 for(const name of ['app.js','core.js','styles.css','bridge-client.js','install.js','i18n.js'])fs.copyFileSync('src/'+name,'docs/'+name);
 for(const name of ['sw.js','manifest.webmanifest'])fs.copyFileSync('pwa/'+name,'docs/'+name);

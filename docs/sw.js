@@ -1,5 +1,5 @@
 'use strict';
-const CACHE='amocashs-ui-v4.1-i18n';
+const CACHE='amocashs-ui-v5-members';
 const FILES=['./','./index.html','./styles.css','./app.js','./i18n.js','./bridge-client.js','./install.js','./core.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/maskable-512.png','./icons/apple-touch-icon.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES))));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(names=>Promise.all(names.filter(name=>name.startsWith('amocashs-')&&name!==CACHE).map(name=>caches.delete(name)))).then(()=>self.clients.claim())));

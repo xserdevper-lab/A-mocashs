@@ -1,13 +1,9 @@
 function doGet(e) {
-  let output=HtmlService.createHtmlOutputFromFile('Index');
-  if(e&&e.parameter&&e.parameter.pwa==='1') {
-    const guard='<style>.pwa-locked body{visibility:hidden!important;pointer-events:none!important}</style><script>const PWA_NONCE='+JSON.stringify(Utilities.getUuid())+';'+PWA_GUARD+'</script>';
-    output=HtmlService.createHtmlOutput(output.getContent().replace('</head>',()=>guard+'</head>'));
-    // Only the embedded variant allows framing. The nonce handshake keeps its
-    // interface locked until the trusted GitHub Pages origin acknowledges it.
-    output.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  if(e&&e.parameter&&e.parameter.bridge==='1') {
+    const html='<!doctype html><html><head><meta charset="utf-8"></head><body><script>const BRIDGE_NONCE='+JSON.stringify(Utilities.getUuid())+';const BRIDGE_CLIENT_ID='+JSON.stringify(String(e.parameter.client||''))+';'+BRIDGE_SERVER+'</script></body></html>';
+    return HtmlService.createHtmlOutput(html).setTitle('A-mocashs Data API').setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
   }
-  return output.setTitle('A-mocashs').addMetaTag('viewport','width=device-width, initial-scale=1');
+  return HtmlService.createHtmlOutput('<!doctype html><html lang="th"><head><meta charset="utf-8"></head><body style="font-family:system-ui;padding:32px"><h2>เชื่อมต่อ Google สำหรับ A-mocashs แล้ว</h2><p>กลับไปที่แอปบน GitHub แล้วกดเชื่อมต่ออีกครั้ง</p><a href="https://xserdevper-lab.github.io/A-mocashs/" target="_top">เปิด A-mocashs</a></body></html>').setTitle('เชื่อมต่อ A-mocashs').addMetaTag('viewport','width=device-width, initial-scale=1');
 }
 // An append-only snapshot log makes each commit one atomic Sheet row write.
 // The readable tabs are projections and are rebuilt from the committed snapshot.

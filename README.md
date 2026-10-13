@@ -10,13 +10,13 @@
 - iPhone / iPad: เปิดด้วย Safari → แชร์ → **เพิ่มไปยังหน้าจอโฮม**
 - Mac / Safari: ไฟล์ → **เพิ่มไปยัง Dock**
 
-PWA ใช้ Google Sheet ชุดเดิมผ่านหน้าจอ Google ที่ลงชื่อเข้าใช้แล้ว ไม่ต้องย้ายข้อมูล ข้อมูลเงินจริงต้องออนไลน์ ถ้าเบราว์เซอร์บล็อกคุกกี้/การลงชื่อเข้าใช้ใน iframe ให้กด **เปิดแอปใน Google** และลงชื่อเข้าใช้ในแท็บ Google โดยตรง แล้วกลับมากดโหลดบัญชีอีกครั้ง เครื่องคิดเลขและหน้าติดตั้งใช้งานออฟไลน์ได้
+UI ทุกหน้าทำงานจาก HTML/CSS/JavaScript บน GitHub Pages โดยตรง Google Apps Script เป็น backend รับส่งข้อมูลกับ Google Sheet เท่านั้น ไม่แสดงหน้าบัญชีใน iframe และไม่ต้องย้ายข้อมูล ข้อมูลเงินจริงต้องออนไลน์ ถ้าเบราว์เซอร์บล็อกการลงชื่อเข้าใช้ ให้เปิด Settings → ลงชื่อเข้าใช้ Google แล้วกลับมากดเชื่อมต่ออีกครั้ง UI และเครื่องคิดเลขใช้งานออฟไลน์ได้ การอ่าน/เขียนข้อมูลจริงต้องออนไลน์
 
 GitHub Pages เก็บเฉพาะหน้าติดตั้ง ไอคอน manifest และ service worker ข้อมูลการเงินอยู่ใน Google Sheet ส่วนตัว ไม่เผยแพร่ใน Pages และไม่ cache ข้อมูลการเงินผ่าน service worker
 
 [เปิดเว็บแอป A-mocashs](https://script.google.com/macros/s/AKfycby2CeqjaCPRyYlSOylsuGtQX8dSGTtYk7XLF72Vmwd3LbQT7TLo1bIMEpyo_t3yCl7L/exec)
 
-แอปจริงใช้ Google Sheet เป็นฐานข้อมูล และจำกัดสิทธิ์เฉพาะบัญชี Google เจ้าของ ลิงก์เว็บแบบ static/ออฟไลน์ใช้สำหรับทดลองเท่านั้น
+ลิงก์ Google ใช้ลงชื่อเข้าใช้ backend เท่านั้น เปิดแอปที่ GitHub Pages เพื่อใช้งานทุกหน้าจอ สิทธิ์เข้า backend และชีตจำกัดเฉพาะบัญชี Google เจ้าของ
 
 ## ฟังก์ชัน
 
@@ -33,10 +33,10 @@ GitHub Pages เก็บเฉพาะหน้าติดตั้ง ไอ
 ฐานข้อมูล: https://docs.google.com/spreadsheets/d/16cELFn6q08ITvp8uT-3PKHfsAf-R7wIMNH6t6DgTd5U/edit
 
 1. เปิด Google Sheet → ส่วนขยาย → Apps Script
-2. วางเนื้อหา `google-apps-script/Code.gs` ในไฟล์สคริปต์ สร้างไฟล์ HTML ชื่อ `Index` และวาง `google-apps-script/Index.html`
+2. วางเนื้อหา `google-apps-script/Code.gs` ในไฟล์สคริปต์ ไม่ต้องติดตั้งไฟล์ UI ใน Google
 3. การทำให้ใช้งานได้ → การทำให้ใช้งานได้รายการใหม่ → เว็บแอป
 4. ดำเนินการในฐานะ **ฉัน** และผู้ที่มีสิทธิ์เข้าถึง **ฉันเท่านั้น**
-5. อนุญาต Google ให้แอปอ่าน/เขียน Google Sheets แล้วเปิด URL เว็บแอป `/exec`
+5. อนุญาต Google ให้แอปอ่าน/เขียน Google Sheets แล้วเปิดหน้า GitHub Pages เพื่อใช้งาน (URL `/exec` ใช้ยืนยัน Google)
 6. ตั้งค่าการแชร์ Sheet เป็น **จำกัด** ก่อนกรอกข้อมูลการเงินจริง
 
 โค้ดเรียกชีตด้วย ID ที่ระบุเท่านั้น แต่ Google ขอ OAuth scope ของบริการ Spreadsheet ซึ่งครอบคลุมสิทธิ์จัดการ Google Sheets ไม่ใช่เพียงไฟล์เดียว จึงต้องให้เจ้าของบัญชียืนยันสิทธิ์ด้วยตนเองหรืออนุญาตอย่างชัดเจน
@@ -63,9 +63,9 @@ python3 -m http.server 4173 --directory dist
 
 แก้ไขไฟล์ `src/` แล้ว build เพื่อสร้าง `dist/` และไฟล์ Apps Script ที่พร้อมติดตั้ง เมื่ออัปเดต Apps Script ให้สร้างเวอร์ชันใหม่ใน Manage deployments เพื่อให้ URL เดิมใช้เวอร์ชันใหม่
 
-ไฟล์ PWA อยู่ใน `pwa/` และ build เป็น `docs/` สำหรับ GitHub Pages ตั้งค่า Pages → Deploy from a branch → main → /docs เมื่อแก้ไฟล์ PWA ให้ build และ commit `docs/` ด้วย
+UI หลักอยู่ใน `src/` และ PWA manifest/icons/service worker อยู่ใน `pwa/` เมื่อ build จะรวมเป็น `docs/` สำหรับ GitHub Pages ตั้งค่า Pages → Deploy from a branch → main → /docs เมื่อแก้ไฟล์ PWA ให้ build และ commit `docs/` ด้วย
 
-ตัวเลือก Google `?pwa=1` เปิดการฝังเฉพาะเวอร์ชันนั้น พร้อมตรวจ origin `https://xserdevper-lab.github.io` และ nonce ผ่าน postMessage ก่อนแสดงหน้าจอ เพื่อป้องกันเว็บไซต์อื่นนำไปฝังใช้งาน ส่วน URL `/exec` ปกติยังคงใช้ frame protection เริ่มต้นของ Google สิทธิ์เข้าเว็บแอปและการแชร์ชีตยังคงเป็นส่วนตัว
+ช่องทางข้อมูล Google `?bridge=1` เป็น iframe ที่ซ่อนและไม่มี UI ทำหน้าที่ส่งคำสั่ง `getState` และ `mutate` ผ่าน `google.script.run` โดยตรวจ origin `https://xserdevper-lab.github.io`, แหล่งหน้าต่าง, nonce และ client challenge ก่อนรับส่งข้อมูล ข้อมูลการเงินอยู่เฉพาะหน่วยความจำเบราว์เซอร์และ Google Sheet ไม่เก็บใน localStorage ของโหมดจริง และไม่ cache ด้วย service worker สิทธิ์เข้าถึงยังคงเป็นส่วนตัว
 
 ## ข้อจำกัด
 
